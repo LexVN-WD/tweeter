@@ -1,0 +1,34 @@
+/* <nav> bar CSS */
+nav {
+  display: flex;
+  justify-content: space-between;
+  height: 120px ;
+  width: 100vw;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+  align-items: center;
+}
+
+/* sets font for <span> within <nav> */
+nav span {
+  font-family: 'Bungee', sans-serif;
+}
+
+/* "Write new tweet" class box CSS */
+div.subHeader {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* sets font for "Write a new tweet" */
+.newTweet span {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* sets the double down arrow icon red */
+div.icon {
+  color: red;
+}
