@@ -4,11 +4,12 @@ nav {
   justify-content: space-between;
   height: 120px ;
   width: 100vw;
-  background-color: #4056A1;
+  background-color: #4B0082;
   color: #FFFFFF;
   padding-right: 1.5em;
   padding-left: 1.5em;
   align-items: center;
+  position: fixed
 }
 
 /* sets font for <span> within <nav> */
@@ -32,3 +33,4 @@ div.subHeader {
 div.icon {
   color: red;
 }
+
