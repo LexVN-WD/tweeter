@@ -77,3 +77,16 @@ const createTweetElement = function(tweet) {
 };
 
 renderTweets(data);
+
+$(document).ready(function() {
+  $("#newTweet").submit(function(event) {
+    event.preventDefault();
+    const formData = $(this).serialize();
+    $.ajax({
+      url: "tweets",
+      method: "POST",
+      data: formData,
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    })
+  })
+});
