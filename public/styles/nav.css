@@ -1,7 +1,8 @@
 /* <nav> bar CSS */
-nav {
+.navBar {
   display: flex;
   justify-content: space-between;
+  position: fixed;
   height: 120px ;
   width: 100vw;
   background-color: #4B0082;
@@ -9,7 +10,6 @@ nav {
   padding-right: 1.5em;
   padding-left: 1.5em;
   align-items: center;
-  position: fixed
 }
 
 /* sets font for <span> within <nav> */

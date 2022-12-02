@@ -25,6 +25,9 @@
 
     <!-- New Tweet CSS -->
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+
+    <!-- Tweet Container CSS -->
+    <link rel="stylesheet" href="/styles/tweet-container.css" type="text/css" />
     
     <!-- External Library Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -43,7 +46,7 @@
 
   <body>
     <!-- Top nav bar (fixed) -->
-    <nav>
+    <nav class="navBar">
       <div class="projectName">
         <span>Lex-VN-Tweeter</span>
       </div>
@@ -86,6 +89,39 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+      
+      <section id="tweetContainer">
+        <article>
+          <header>
+            <div>
+              <img class="avatar" src="https://i.imgur.com/73hZDYK.png">
+              <span class="username"> Newton </span>
+            </div>
+            <span class="handle"><b> @SirIsaac </b></span>
+          </header>
+          
+          <div>
+            <p> If I have seen further it is by standing on the shoulders of giants </p>
+          </div>
+          
+          <footer>
+            <div>
+              <time> 10 days ago </time>
+            </div>
+            <nav>
+              <button type="button" class="flag">
+                <i class="fa-solid fa-flag"></i>
+              </button>
+              <button type="button" class="retweet">
+                <i class="fa-solid fa-retweet"></i>
+              </button>
+              <button type="button" class="heart">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+            </nav>
+          </footer>
+        </article>
       </section>
     </main>
   </body>

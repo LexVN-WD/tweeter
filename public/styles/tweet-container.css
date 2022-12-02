@@ -1,0 +1,89 @@
+#tweetContainer {
+  display: flex;
+  width: 90vw;
+}
+
+#tweetContainer article {
+  display: flex;
+  width: 100vw;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  border: 5px solid black;
+  flex-direction: column;
+}
+
+#tweetContainer header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+#tweetContainer header div {
+  justify-content: flex-start;
+  display: flex;
+  gap: 1rem;
+}
+
+#tweetContainer img.avatar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50px;
+}
+
+#tweetContainer span.username {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+}
+
+#tweetContainer span.handle {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: grey;
+}
+
+#tweetContainer p {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bold;
+  color: black;
+  padding: 0.5rem;
+}
+
+#tweetContainer footer {
+  display: flex;
+  padding: 1rem;
+  border-top: 5px solid black;
+  justify-content: space-between;
+}
+
+#tweetContainer footer div {
+  display: flex;
+  color: white;
+}
+
+#tweetContainer footer nav {
+  display: flex;
+}
+
+#tweetContainer footer nav button {
+  display: flex;
+  justify-content: space-around;
+  color: black;
+  background-color: #A4a1a6;
+  border: 0;
+}
+
+#tweetContainer footer nav button:hover {
+  color: white;
+}
+
+#tweetContainer article:hover {
+  box-shadow: 10px 5px 5px green;
+}

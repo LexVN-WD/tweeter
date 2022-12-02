@@ -21,6 +21,10 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+ */
+
 main {
   display: flex;
   flex-direction: column;
@@ -31,12 +35,3 @@ main {
   margin: auto;
   color: white;
 }
-
-footer {
-  font-size: 1rem;
-  padding: 4rem 0 3rem;
-  text-align: center;
-}
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
