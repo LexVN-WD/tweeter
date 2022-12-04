@@ -52,7 +52,7 @@
     <!-- Top nav bar (fixed) -->
     <nav class="navBar">
       <div class="projectName">
-        <span>Lex-VN-Tweeter</span>
+        <span>Tweeter</span>
       </div>
       
       <div class="subHeader">
@@ -81,9 +81,11 @@
         </header>
       </div>
     </div>
+
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
+        <div class="errorMessage" id="errorMessage"></div>
         <h2>Compose Tweet</h2>
           <form id="newTweet" method="POST" action="/tweets">
             <label for="tweet-text">What are you humming about?</label>
@@ -95,6 +97,7 @@
         </form>
       </section>
       
+      <!-- Main tweet timeline container -->
       <section id="tweetContainer">
       </section>
     </main>

@@ -3,6 +3,15 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
+// Escape function to prevent XSS attacks
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+// renderTweets Function --> Prepends tweet objects to tweet-container
 const renderTweets = function(tweets) {
   // loops through tweets
   for (const element of tweets) {
@@ -13,6 +22,7 @@ const renderTweets = function(tweets) {
   }
 };
 
+// createTweetElement Function --> Takes tweet object and returns holistic HTML element 
 const createTweetElement = function(tweet) {
   let timeAgo = timeago.format(tweet.created_at);
   const $tweet = $(`
@@ -25,7 +35,7 @@ const createTweetElement = function(tweet) {
       <span class="handle"><b> ${tweet.user.handle} </b></span>
     </header>
     <div>
-      <p> ${tweet.content.text} </p>
+      <p> ${escape(tweet.content.text)} </p>
     </div>
     <footer>
       <div>
@@ -45,12 +55,31 @@ const createTweetElement = function(tweet) {
     </footer>
   </article>
   `);
-  
   return $tweet;
 };
 
+// error message helper function
+const errMessage = function(message) {
+  $("#errorMessage").slideDown()
+  $("#errorMessage").html(`&#9940${message}&#9940`)
+}
+
+// // form successful submit helper function
+// const formSuccess = function(response) {
+//   $("#tweet-text").val("");
+//   $(".counter").val("140");
+//   renderTweets(response);
+// }
+
+// form submit error helper function
+const formError = function() {
+  errMessage("There has been an error with your Tweet! Please try again.");
+}
+
 $(document).ready(function () {
-  // loadTweets function
+  
+  /* loadTweets Function --> allows user to view transformed tweet object in tweet container 
+  after submit without refresh */
   const loadTweets = () => {
     const newTweet = $.get(
       "http://localhost:8080/tweets",
@@ -59,21 +88,22 @@ $(document).ready(function () {
       }
     )
   };
-  loadTweets();
 
+  loadTweets();
+  $("#errorMessage").hide();
+
+  /* Form submit event handler */
   $("#newTweet").submit(function(event) {
+    
     event.preventDefault();
 
-    const $formData = $(this).serialize();
-    const maxCharLimit = 140;
+    // length of characters within tweet-text textarea
+    const textData = $(this).find("#tweet-text").val().length;
 
-
-    if ($formData === "text=") {
-      return alert("No Text Written");
-    } 
-    
-    if ($formData.length > maxCharLimit) {
-      return alert("Max Character Limit Exceeded");
+    if (textData === 0 || null) {
+      errMessage("No text submitted");
+    } else if (textData > 140) {
+      errMessage("Max Character Limit Exceeded");
     } else {
       const formData = $(this).serialize();
       $.ajax({
@@ -84,12 +114,11 @@ $(document).ready(function () {
         success: function(response) {
           $("#tweet-text").val("");
           $(".counter").val("140");
-          renderTweets(response);
+          $("#tweetContainer").empty();
+          $("#errorMessage").slideUp()
           loadTweets();
         },
-        error: function() {
-          alert("There has been an error with your Tweet! Please try again.");
-        }
+        error: formError,
       });
     }
   });

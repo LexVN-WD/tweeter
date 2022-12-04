@@ -43,3 +43,11 @@
   font-family: 'bungee', sans-serif;
   color: black;
 }
+
+#errorMessage {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: lightcoral;
+  text-align: center;
+  font-family: 'bungee';
+}
