@@ -3,90 +3,91 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-
 const renderTweets = function(tweets) {
   // loops through tweets
   for (const element of tweets) {
     // calls createTweetElement for each tweet
-    let $tweet = createTweetElement(element);
+    const $tweet = createTweetElement(element);
     // takes return value and appends it to the tweets container
     $("#tweetContainer").append($tweet);
   }
 };
 
 const createTweetElement = function(tweet) {
-  let $tweet = `<article>
-                    <header>
-                      <div>
-                        <img class="avatar" src=${tweet.user.avatars}>
-                        <span class="username"> ${tweet.user.name} </span>
-                        </div>
-                        <span class="handle"><b> ${tweet.user.handle} </b></span>
-                      </header>
-          
-                      <div>
-                        <p> ${tweet.content.text} </p>
-                      </div>
-          
-                      <footer>
-                        <div>
-                          <time> ${tweet.created_at} </time>
-                        </div>
-                        <nav>
-                          <button type="button" class="flag">
-                            <i class="fa-solid fa-flag"></i>
-                          </button>
-                          <button type="button" class="retweet">
-                            <i class="fa-solid fa-retweet"></i>
-                          </button>
-                          <button type="button" class="heart">
-                            <i class="fa-solid fa-heart"></i>
-                          </button>
-                        </nav>
-                      </footer>
-                    </article>`;
-
-        return $tweet;
+  let timeAgo = timeago.format(tweet.created_at);
+  const $tweet = $(`
+  <article>
+    <header>
+      <div>
+        <img class="avatar" src=${tweet.user.avatars}>
+        <span class="username"> ${tweet.user.name} </span>
+      </div>
+      <span class="handle"><b> ${tweet.user.handle} </b></span>
+    </header>
+    <div>
+      <p> ${tweet.content.text} </p>
+    </div>
+    <footer>
+      <div>
+        <time> ${timeAgo} </time>
+      </div>
+      <nav>
+        <button type="button" class="flag">
+          <i class="fa-solid fa-flag"></i>
+        </button>
+        <button type="button" class="retweet">
+          <i class="fa-solid fa-retweet"></i>
+        </button>
+        <button type="button" class="heart">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+      </nav>
+    </footer>
+  </article>
+  `);
+  
+  return $tweet;
 };
 
-renderTweets(data);
+$(document).ready(function () {
+  // loadTweets function
+  const loadTweets = () => {
+    const newTweet = $.get(
+      "http://localhost:8080/tweets",
+      function(response) {
+        renderTweets(response)
+      }
+    )
+  };
+  loadTweets();
 
-$(document).ready(function() {
   $("#newTweet").submit(function(event) {
     event.preventDefault();
-    const formData = $(this).serialize();
-    $.ajax({
-      url: "tweets",
-      method: "POST",
-      data: formData,
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-    })
-  })
+
+    const $formData = $(this).serialize();
+    const maxCharLimit = 140;
+
+
+    if ($formData === "text=") {
+      return alert("No Text Written");
+    } 
+    
+    if ($formData.length > maxCharLimit) {
+      return alert("Max Character Limit Exceeded");
+    } else {
+      const formData = $(this).serialize();
+      $.ajax({
+        url: "http://localhost:8080/tweets",
+        method: "POST",
+        data: formData,
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        success: function(response) {
+          renderTweets(response);
+        },
+        error: function() {
+          alert("There has been an error with you Tweet! Please try again.");
+        }
+      });
+    }
+  });
 });
