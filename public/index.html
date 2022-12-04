@@ -54,28 +54,28 @@
       <div class="projectName">
         <span>Tweeter</span>
       </div>
-      
       <div class="subHeader">
         <div class="newTweet">
             <div class="new">
               <span><b>Write</b> a new tweet</span>
             </div>
         </div>
-
         <div class="icon">
           <i class="fa-solid fa-angles-down"></i>
         </div>
       </div>
     </nav>
 
+    <section class="headerContainer" id="headerContainer">
+    <!-- Profile Information -->
     <div class="profile">
       <div class="headerContainer">
-        <header class="header">
-          <div>
+        <header class="header" id="header">
+          <div class="profilePicture">
             <img src="/images/profile-hex.png" />
           </div>
           <br>
-          <div>
+          <div class="profileName">
             <h2> <b>Alexander</b> Van-Nugent</h2>
           </div>
         </header>
@@ -85,8 +85,6 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <div class="errorMessage" id="errorMessage"></div>
-        <h2>Compose Tweet</h2>
           <form id="newTweet" method="POST" action="/tweets">
             <label for="tweet-text">What are you humming about?</label>
             <textarea name="text" id="tweet-text"></textarea>
@@ -94,6 +92,7 @@
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
+          <div class="errorMessage" id="errorMessage"></div>
         </form>
       </section>
       
@@ -101,6 +100,7 @@
       <section id="tweetContainer">
       </section>
     </main>
+    </section>
   </body>
 
 </html>

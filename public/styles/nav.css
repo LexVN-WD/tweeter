@@ -15,10 +15,11 @@
 /* sets font for <span> within <nav> */
 nav span {
   font-family: 'Bungee', sans-serif;
+  font-size: larger;
 }
 
 /* "Write new tweet" class box CSS */
-div.subHeader {
+.subHeader {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -30,7 +31,12 @@ div.subHeader {
 }
 
 /* sets the double down arrow icon red */
-div.icon {
+.icon {
   color: red;
 }
 
+@media(max-width: 1024px) {
+  .navBar {
+    background-color: #4B0082;
+  }
+}

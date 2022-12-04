@@ -1,9 +1,10 @@
 .new-tweet {
   color: black;
-  width: 90vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  font-weight: bold;
 }
 
 .new-tweet label {
@@ -11,11 +12,12 @@
 }
 
 .new-tweet form {
-  width: 90vw;
+  width: 100%;
+  padding-top: 50px;
 }
 
 .new-tweet textarea {
-  width: 90vw;
+  width: 100%;
   background: transparent;
   display: block;
   color: #4B0082;
@@ -44,10 +46,18 @@
   color: black;
 }
 
-#errorMessage {
+.errorMessage {
   margin-top: 1rem;
   width: 100%;
   background-color: lightcoral;
   text-align: center;
   font-family: 'bungee';
 }
+
+/* Desktop/Laptop Responsive Design */
+@media only screen and (min-width: 1024px) {
+  #newTweet {
+    padding-top: 150px;
+  }
+}
+/* 
