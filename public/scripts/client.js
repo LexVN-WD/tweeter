@@ -9,7 +9,7 @@ const renderTweets = function(tweets) {
     // calls createTweetElement for each tweet
     const $tweet = createTweetElement(element);
     // takes return value and appends it to the tweets container
-    $("#tweetContainer").append($tweet);
+    $("#tweetContainer").prepend($tweet);
   }
 };
 
@@ -82,10 +82,13 @@ $(document).ready(function () {
         data: formData,
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         success: function(response) {
+          $("#tweet-text").val("");
+          $(".counter").val("140");
           renderTweets(response);
+          loadTweets();
         },
         error: function() {
-          alert("There has been an error with you Tweet! Please try again.");
+          alert("There has been an error with your Tweet! Please try again.");
         }
       });
     }
