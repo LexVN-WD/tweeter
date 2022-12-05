@@ -49,33 +49,33 @@
   </head>
 
   <body>
-    <!-- Top nav bar (fixed) -->
-    <nav class="navBar">
-      <div class="projectName">
-        <span>Tweeter</span>
+    <!-- Nav Bar (Fixed Position) -->
+    <nav class="nav-bar">
+      <div>
+        <span class="project-name">Tweeter</span>
       </div>
-      <div class="subHeader">
-        <div class="newTweet">
-            <div class="new">
+      <div class="sub-header">
+        <div class="write-tweet">
+            <div>
               <span><b>Write</b> a new tweet</span>
             </div>
         </div>
-        <div class="icon">
+        <div class="write-tweet-icon">
           <i class="fa-solid fa-angles-down"></i>
         </div>
       </div>
     </nav>
 
-    <section class="headerContainer" id="headerContainer">
-    <!-- Profile Information -->
-    <div class="profile">
-      <div class="headerContainer">
-        <header class="header" id="header">
-          <div class="profilePicture">
+    <!-- Header Profile Information -->
+    <section class="header-container">
+    <div class="profile-info">
+      <div>
+        <header class="profile-header">
+          <div class="profile-picture">
             <img src="/images/profile-hex.png" />
           </div>
           <br>
-          <div class="profileName">
+          <div class="profile-name">
             <h2> <b>Alexander</b> Van-Nugent</h2>
           </div>
         </header>
@@ -83,21 +83,21 @@
     </div>
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main class="main-container">
       <section class="new-tweet">
-          <form id="newTweet" method="POST" action="/tweets">
+          <form id="tweet-form" method="POST" action="/tweets">
             <label for="tweet-text">What are you humming about?</label>
-            <textarea name="text" id="tweet-text"></textarea>
-          <div class="buttonCounterContainer">
+            <textarea name="text" id="tweet-text" placeholder="Tweet Tweet here"></textarea>
+          <div class="button-counter">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
-          <div class="errorMessage" id="errorMessage"></div>
+          <div class="error-message"></div>
         </form>
       </section>
       
       <!-- Main tweet timeline container -->
-      <section id="tweetContainer">
+      <section class="tweet-container" id="tweet-container">
       </section>
     </main>
     </section>
