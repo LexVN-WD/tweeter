@@ -1,5 +1,5 @@
-/* <nav> bar CSS */
-.navBar {
+/* sets .nav-bar CSS rules */
+.nav-bar {
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -7,36 +7,37 @@
   width: 100vw;
   background-color: #4B0082;
   color: #FFFFFF;
-  padding-right: 1.5em;
-  padding-left: 1.5em;
+  padding: 0 1.5em 0;
   align-items: center;
 }
 
-/* sets font for <span> within <nav> */
-nav span {
+/* sets font for span.project-name */
+.project-name {
   font-family: 'Bungee', sans-serif;
   font-size: larger;
 }
 
-/* "Write new tweet" class box CSS */
-.subHeader {
+/* .new-tweet parent container */
+.sub-header {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-/* sets font for "Write a new tweet" */
-.newTweet span {
+/* sets font for .new-tweet */
+.write-tweet span {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* sets the double down arrow icon red */
-.icon {
+/* sets .write-tweet-icon image to red */
+.write-tweet-icon {
   color: red;
 }
 
+/* mobile device responsive esign CSS */
 @media(max-width: 1024px) {
   .navBar {
-    background-color: #4B0082;
+    background-color: #008f32;
+    background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");
   }
 }
