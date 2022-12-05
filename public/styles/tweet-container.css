@@ -1,4 +1,5 @@
-#tweetContainer {
+/* tweet container for timeline of objects from "/tweets" */
+.tweet-container {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -7,51 +8,57 @@
   justify-content: space-evenly;
 }
 
-#tweetContainer article {
+/* tweet article posts  */
+.tweet-container article {
   display: flex;
   width: 100%;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin: 3rem 0 3rem;
   padding: 1rem;
   border: 5px solid black;
   flex-direction: column;
 }
 
-#tweetContainer header {
+/* parent container for header of tweet articles */
+.tweet-container header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 0.5rem;
 }
 
-#tweetContainer header div {
+/* header container for avatar, username, handle */
+.tweet-container header div {
   justify-content: flex-start;
   display: flex;
   gap: 1rem;
 }
 
-#tweetContainer img.avatar {
+/* tweet article profile avatar */
+.tweet-container img.avatar {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 50px;
 }
 
-#tweetContainer span.username {
+/* tweet article profile username */
+.tweet-container span.username {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   color: white;
 }
 
-#tweetContainer span.handle {
+/* tweet article profile handle */
+.tweet-container span.handle {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   color: grey;
 }
 
-#tweetContainer p {
+/* tweet article typed content */
+.tweet-container p {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -60,23 +67,27 @@
   padding: 0.5rem;
 }
 
-#tweetContainer footer {
+/* parent container for footer  */
+.tweet-container footer {
   display: flex;
   padding: 1rem;
   border-top: 5px solid black;
   justify-content: space-between;
 }
 
-#tweetContainer footer div {
+/* footer container for timeago and nav buttons */
+.tweet-container footer div {
   display: flex;
   color: white;
 }
 
-#tweetContainer footer nav {
+/* footer nav container */
+.tweet-container footer nav {
   display: flex;
 }
 
-#tweetContainer footer nav button {
+/* footer nav buttons */
+.tweet-container footer nav button {
   display: flex;
   justify-content: space-around;
   color: black;
@@ -84,10 +95,12 @@
   border: 0;
 }
 
-#tweetContainer footer nav button:hover {
+/* CSS to change color of foooter buttons on hover */
+.tweet-container footer nav button:hover {
   color: white;
 }
 
-#tweetContainer article:hover {
+/* CSS to show box-shadow for tweet container article */
+.tweet-container article:hover {
   box-shadow: 10px 5px 5px green;
 }
