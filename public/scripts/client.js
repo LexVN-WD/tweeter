@@ -4,13 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Escape function to prevent XSS attacks
-const escape = function (str) {
-  let div = document.createElement("div");
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-};
-
 // renderTweets Function --> Prepends tweet objects to tweet-container
 const renderTweets = function(tweets) {
   // loops through tweets
@@ -18,13 +11,15 @@ const renderTweets = function(tweets) {
     // calls createTweetElement for each tweet
     const $tweet = createTweetElement(element);
     // takes return value and appends it to the tweets container
-    $("#tweetContainer").prepend($tweet);
+    $(".tweet-container").prepend($tweet);
   }
 };
 
 // createTweetElement Function --> Takes tweet object and returns holistic HTML element 
 const createTweetElement = function(tweet) {
-  let timeAgo = timeago.format(tweet.created_at);
+
+  const timeAgo = timeago.format(tweet.created_at);
+  
   const $tweet = $(`
   <article>
     <header>
@@ -60,16 +55,10 @@ const createTweetElement = function(tweet) {
 
 // error message helper function
 const errMessage = function(message) {
-  $("#errorMessage").slideDown()
-  $("#errorMessage").html(`&#9940${message}&#9940`)
+  $(".error-message").slideDown()
+  $(".error-message").html(`&#9940${message}&#9940`)
 }
 
-// // form successful submit helper function
-// const formSuccess = function(response) {
-//   $("#tweet-text").val("");
-//   $(".counter").val("140");
-//   renderTweets(response);
-// }
 
 // form submit error helper function
 const formError = function() {
@@ -90,10 +79,10 @@ $(document).ready(function () {
   };
 
   loadTweets();
-  $("#errorMessage").hide();
+  $(".error-message").hide();
 
   /* Form submit event handler */
-  $("#newTweet").submit(function(event) {
+  $("#tweet-form").submit(function(event) {
     
     event.preventDefault();
 
@@ -114,8 +103,8 @@ $(document).ready(function () {
         success: function(response) {
           $("#tweet-text").val("");
           $(".counter").val("140");
-          $("#tweetContainer").empty();
-          $("#errorMessage").slideUp()
+          $(".tweet-container").empty();
+          $(".error-message").slideUp()
           loadTweets();
         },
         error: formError,
@@ -123,3 +112,10 @@ $(document).ready(function () {
     }
   });
 });
+
+// Escape function to prevent XSS attacks
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
