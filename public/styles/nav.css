@@ -36,7 +36,7 @@
 
 /* mobile device responsive esign CSS */
 @media(max-width: 1024px) {
-  .navBar {
+  .nav-bar {
     background-color: #008f32;
     background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");
   }
