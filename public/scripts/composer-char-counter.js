@@ -1,5 +1,4 @@
-// console.log("script has been loaded");
-
+// DOM function to count length of characters from form data
 $(document).ready(function () {
   // --- our code goes here ---
   $("#tweet-text").on("input", function(e){
